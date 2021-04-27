@@ -1,0 +1,32 @@
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet dhcp
+   post-up /sbin/ifconfig eth1 mtu 1550; route add -net 10.90.3.0 netmask 255.255.255.224 gw 10.91.3.1
+
+auto vxlan1
+iface vxlan1 inet static
+   mtu 1500
+   pre-up ip link add vxlan1 type vxlan id 2 remote 10.90.3.4 dev eth1 || true
+   up ip link set vxlan1 up
+   down ip link set vxlan1 down
+   post-down ip link del vxlan1 || true
+   address 10.92.0.6
+   netmask 255.255.255.252
+
+auto vxlan2
+iface vxlan2 inet static
+   mtu 1500
+   pre-up ip link add vxlan2 type vxlan id 4 remote 10.90.3.5 dev eth1 || true
+   up ip link set vxlan2 up
+   down ip link set vxlan2 down
+   post-down ip link del vxlan2 || true
+   address 10.92.0.14
+   netmask 255.255.255.252
