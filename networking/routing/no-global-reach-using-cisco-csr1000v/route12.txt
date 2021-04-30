@@ -1,0 +1,53 @@
+ip routing
+
+interface Tunnel2
+ ip address 10.92.0.6 255.255.255.252
+ tunnel source GigabitEthernet2
+ tunnel mode vxlan-gpe ipv4
+ tunnel destination 10.90.3.5
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ mtu 1550
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router bgp 65103
+ bgp log-neighbor-changes
+ neighbor 10.91.1.36 remote-as 65515
+ neighbor 10.91.1.36 ebgp-multihop 255
+ neighbor 10.91.1.37 remote-as 65515
+ neighbor 10.91.1.37 ebgp-multihop 255
+ neighbor 10.92.0.5 remote-as 65101
+ !
+ address-family ipv4
+  neighbor 10.91.1.36 activate
+  neighbor 10.91.1.36 route-map from-routeserver in
+  neighbor 10.91.1.36 route-map to-routeserver out
+  neighbor 10.91.1.37 activate
+  neighbor 10.91.1.37 route-map from-routeserver in
+  neighbor 10.91.1.37 route-map to-routeserver out
+  neighbor 10.92.0.5 activate
+  neighbor 10.92.0.5 route-map from-peer in
+  neighbor 10.92.0.5 route-map to-peer out
+ exit-address-family
+!
+ip route 10.91.1.32 255.255.255.224 10.91.2.1
+ip route 10.90.3.0 255.255.255.224 10.91.3.1
+!
+route-map to-peer permit 10
+ set as-path replace 12076
+ set as-path replace 65515
+!
+route-map from-peer permit 10
+!
+route-map from-routeserver permit 10
+!
+route-map to-routeserver permit 10

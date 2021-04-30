@@ -22,7 +22,7 @@ You can also use this guide if you want to route the traffic from on premises to
 ## Getting Started
 
 To get started create four virtual machines for a highly available implementation.
-Visit look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute) to learn more about Virtual Machines and their network throughput, in this guide all VMs where D4s_v3 instances with 2000 MBit/s, so roughly 200 MByte/s.
+Look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute) to learn more about Virtual Machines and their network throughput, in this guide all VMs where D4s_v3 instances with 2000 MBit/s, so roughly 200 MByte/s.
 
 The guide shows all IP addresses used, please update those to fit your scenario.
 
