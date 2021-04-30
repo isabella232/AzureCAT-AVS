@@ -26,6 +26,12 @@ Look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-comput
 
 The guide shows all IP addresses used, please update those to fit your scenario.
 
+### Network Diagram
+
+![network architecture](network-architecture.jpg)
+
+You can download an editable version of the diagram [here](network-architecture.vsdx)
+
 ### Create Hub vNET
 
 The Hub vNET connects to on premises and contains the hub VMs.
