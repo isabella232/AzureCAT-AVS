@@ -26,6 +26,8 @@ Look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-comput
 
 The guide shows all IP addresses used, please update those to fit your scenario.
 
+The repository also contains the configuration files for each device.
+
 ### Network Diagram
 
 ![network architecture](network-architecture.jpg)
