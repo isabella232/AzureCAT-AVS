@@ -30,16 +30,7 @@ One common use case is e.g. sending traffic through an NVA or propagate a defaul
 
 You can also download a PDF [here](avs-network-decision-tree.pdf)
 
-
-
-To get started create four virtual machines for a highly available implementation.
-Look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-compute) to learn more about Virtual Machines and their network throughput, in this guide all VMs where D4s_v3 instances with 2000 MBit/s, so roughly 200 MByte/s.
-
-This guide used Cisco CSR1000V AX enabled images available in Azure marketplace.
-
-To learn more about Cisco CSR1000V on Azure visit [this](https://www.cisco.com/c/en/us/td/docs/routers/csr1000/software/azu/b_csr1000config-azure.html) website.
-
-The guide shows all IP addresses used, please update those to fit your scenario.
+---
 
 ### Reference architectures
 
