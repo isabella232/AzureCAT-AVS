@@ -36,14 +36,14 @@ You can also download a PDF [here](avs-network-decision-tree.pdf)
 
 The reference architectures will be described on separate pages
 
-  1. [Deploy an Azure Firewall in a secured vWAN hub with Default Gateway propagation](deploy-an-azure-firewall-in-a-secured-vwan-hub-with-default-gateway-propagation)
-  2. [Deploy NVA with VXLAN in transit vNET and Route Server](deploy-nva-with-vxlan-in-transit-vnet-and-route-server)
-  3. [Deploy NVA without VXLAN in transit vNET and Route Server](deploy-nva-without-vxlan-in-transit-vnet-and-route-server)
-  4. [Deploy non-integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server)
-  5. [Deploy integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server)
-  6. [Deploy non-integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server)
-  7. [Deploy integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server)
-  8. [Deploy AVS with Global Reach with or without NVAs in Azure (vNET or vWAN)](deploy-avs-with-global-reach-with-or-without-nvas-in-azure-vnet-or-vwan)
+  1. [Deploy an Azure Firewall in a secured vWAN hub with Default Gateway propagation](deploy-an-azure-firewall-in-a-secured-vwan-hub-with-default-gateway-propagation) (coming soon)
+  2. [Deploy NVA with VXLAN in transit vNET and Route Server](deploy-nva-with-vxlan-in-transit-vnet-and-route-server) (coming soon)
+  3. [Deploy NVA without VXLAN in transit vNET and Route Server](deploy-nva-without-vxlan-in-transit-vnet-and-route-server) (coming soon)
+  4. [Deploy non-integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
+  5. [Deploy integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
+  6. [Deploy non-integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
+  7. [Deploy integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
+  8. [Deploy AVS with Global Reach with or without NVAs in Azure (vNET or vWAN)](deploy-avs-with-global-reach-with-or-without-nvas-in-azure-vnet-or-vwan) (coming soon)
   9. Deploy a routing solution like bird or CSR1000V
 
       * [Deploy a Routing solution using BIRD](deploy-routing-bird)
