@@ -43,7 +43,7 @@ The reference architectures will be described on separate pages
   5. [Deploy integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
   6. [Deploy non-integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
   7. [Deploy integrated NVAs with VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-with-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
-  8. [Deploy AVS with Global Reach with or without NVAs in Azure (vNET or vWAN)](deploy-avs-with-global-reach-with-or-without-nvas-in-azure-vnet-or-vwan) (coming soon)
+  8. [Deploy AVS with Global Reach with or without NVAs in Azure (vNET or vWAN)](deploy-avs-with-global-reach-with-or-without-nvas-in-azure-vnet-or-vwan)
   9. Deploy a routing solution like bird or CSR1000V
 
       * [Deploy a Routing solution using BIRD](deploy-routing-bird)
