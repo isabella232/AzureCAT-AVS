@@ -37,7 +37,7 @@ You can also download a PDF [here](avs-network-decision-tree.pdf)
 The reference architectures will be described on separate pages
 
   1. [Deploy an Azure Firewall in a secured vWAN hub with Default Gateway propagation](deploy-an-azure-firewall-in-a-secured-vwan-hub-with-default-gateway-propagation) (coming soon)
-  2. [Deploy NVA with VXLAN in transit vNET and Route Server](deploy-nva-with-vxlan-in-transit-vnet-and-route-server) (coming soon)
+  2. [Deploy NVA with VXLAN in transit vNET and Route Server](deploy-nva-with-vxlan-in-transit-vnet-and-route-server)
   3. [Deploy NVA without VXLAN in transit vNET and Route Server](deploy-nva-without-vxlan-in-transit-vnet-and-route-server) (coming soon)
   4. [Deploy non-integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-non-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
   5. [Deploy integrated NVAs without VXLAN in vWAN with transit vNET and Route Server](deploy-integrated-nvas-without-vxlan-in-vwan-with-transit-vnet-and-route-server) (coming soon)
