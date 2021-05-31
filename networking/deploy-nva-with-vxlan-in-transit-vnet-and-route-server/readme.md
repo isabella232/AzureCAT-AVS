@@ -17,14 +17,14 @@ To successfully connect an AVS environment through NVA and ExpressRoute to on-pr
 
 This scenario includes:
 
-    * Hub VNET (10.80.0.0/22)
-        * Azure Route Server (10.80.3.4, 10.80.3.5) AS 65515
-        * Hub Firewall that is connected to Route Server in Hub VNET using BGP (10.80.0.100, 10.80.1.100), AS 10100
-    * AVS Hub VNET (10.80.4.0/22)
-        * Azure Route Server (10.80.6.4, 10.80.6.5), AS 65515
-        * AVS Hub Firewall that is connected to Route Server in AVS Hub VNET using BGP (10.80.4.100, 10.80.5.100), AS 10200
-    * VXLAN Tunnel between the two firewalls
-    * eBGP Session between the two firewalls
+* Hub VNET (10.80.0.0/22)
+  * Azure Route Server (10.80.3.4, 10.80.3.5) AS 65515
+  * Hub Firewall that is connected to Route Server in Hub VNET using BGP (10.80.0.100, 10.80.1.100), AS 10100
+* AVS Hub VNET (10.80.4.0/22)
+  * Azure Route Server (10.80.6.4, 10.80.6.5), AS 65515
+  * AVS Hub Firewall that is connected to Route Server in AVS Hub VNET using BGP (10.80.4.100, 10.80.5.100), AS 10200
+* VXLAN Tunnel between the two firewalls
+* eBGP Session between the two firewalls
 
 The advantage of this scenario with the VXLAN tunnel is that there are no UDRs required, and the system automatically populates new routes without manual intervention.
 
