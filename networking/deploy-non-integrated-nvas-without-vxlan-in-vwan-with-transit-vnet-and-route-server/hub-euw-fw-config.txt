@@ -1,0 +1,532 @@
+
+pl@avseuwfw01> show config running
+
+config {
+  mgt-config {
+    users {
+      admin {
+        phash *;
+        permissions {
+          role-based {
+            superuser yes;
+          }
+        }
+      }
+      pl {
+        permissions {
+          role-based {
+            superuser yes;
+          }
+        }
+      }
+    }
+    password-complexity {
+      enabled yes;
+      minimum-length 8;
+    }
+  }
+  shared {
+    application;
+    application-group;
+    service;
+    service-group;
+    botnet {
+      configuration {
+        http {
+          dynamic-dns {
+            enabled yes;
+            threshold 5;
+          }
+          malware-sites {
+            enabled yes;
+            threshold 5;
+          }
+          recent-domains {
+            enabled yes;
+            threshold 5;
+          }
+          ip-domains {
+            enabled yes;
+            threshold 10;
+          }
+          executables-from-unknown-sites {
+            enabled yes;
+            threshold 5;
+          }
+        }
+        other-applications {
+          irc yes;
+        }
+        unknown-applications {
+          unknown-tcp {
+            destinations-per-hour 10;
+            sessions-per-hour 10;
+            session-length {
+              maximum-bytes 100;
+              minimum-bytes 50;
+            }
+          }
+          unknown-udp {
+            destinations-per-hour 10;
+            sessions-per-hour 10;
+            session-length {
+              maximum-bytes 100;
+              minimum-bytes 50;
+            }
+          }
+        }
+      }
+      report {
+        topn 100;
+        scheduled yes;
+      }
+    }
+  }
+  devices {
+    localhost.localdomain {
+      network {
+        interface {
+          ethernet {
+            ethernet1/1 {
+              layer3 {
+                ndp-proxy {
+                  enabled no;
+                }
+                sdwan-link-settings {
+                  upstream-nat {
+                    enable no;
+                    static-ip;
+                  }
+                  enable no;
+                }
+                lldp {
+                  enable no;
+                }
+                ip {
+                  10.20.4.4/24;
+                }
+              }
+            }
+            ethernet1/2 {
+              layer3 {
+                ndp-proxy {
+                  enabled no;
+                }
+                sdwan-link-settings {
+                  upstream-nat {
+                    enable no;
+                    static-ip;
+                  }
+                  enable no;
+                }
+                lldp {
+                  enable no;
+                }
+                ip {
+                  10.20.5.4/24;
+                }
+              }
+            }
+          }
+          tunnel {
+            units;
+          }
+        }
+        profiles {
+          monitor-profile {
+            default {
+              interval 3;
+              threshold 5;
+              action wait-recover;
+            }
+          }
+        }
+        ike {
+          crypto-profiles {
+            ike-crypto-profiles {
+              default {
+                encryption [ aes-128-cbc 3des];
+                hash sha1;
+                dh-group group2;
+                lifetime {
+                  hours 8;
+                }
+              }
+              Suite-B-GCM-128 {
+                encryption aes-128-cbc;
+                hash sha256;
+                dh-group group19;
+                lifetime {
+                  hours 8;
+                }
+              }
+              Suite-B-GCM-256 {
+                encryption aes-256-cbc;
+                hash sha384;
+                dh-group group20;
+                lifetime {
+                  hours 8;
+                }
+              }
+              easy {
+                hash md5;
+                dh-group group1;
+                encryption des;
+                lifetime {
+                  hours 8;
+                }
+              }
+            }
+            ipsec-crypto-profiles {
+              default {
+                esp {
+                  encryption [ aes-128-cbc 3des];
+                  authentication sha1;
+                }
+                dh-group group2;
+                lifetime {
+                  hours 1;
+                }
+              }
+              Suite-B-GCM-128 {
+                esp {
+                  encryption aes-128-gcm;
+                  authentication none;
+                }
+                dh-group group19;
+                lifetime {
+                  hours 1;
+                }
+              }
+              Suite-B-GCM-256 {
+                esp {
+                  encryption aes-256-gcm;
+                  authentication none;
+                }
+                dh-group group20;
+                lifetime {
+                  hours 1;
+                }
+              }
+              test {
+                lifetime {
+                  hours 1;
+                }
+                dh-group group1;
+                esp {
+                  authentication md5;
+                  encryption null;
+                }
+              }
+            }
+            global-protect-app-crypto-profiles {
+              default {
+                encryption aes-128-cbc;
+                authentication sha1;
+              }
+            }
+          }
+          gateway;
+        }
+        qos {
+          profile {
+            default {
+              class-bandwidth-type {
+                mbps {
+                  class {
+                    class1 {
+                      priority real-time;
+                    }
+                    class2 {
+                      priority high;
+                    }
+                    class3 {
+                      priority high;
+                    }
+                    class4 {
+                      priority medium;
+                    }
+                    class5 {
+                      priority medium;
+                    }
+                    class6 {
+                      priority low;
+                    }
+                    class7 {
+                      priority low;
+                    }
+                    class8 {
+                      priority low;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        virtual-router {
+          default {
+            protocol {
+              bgp {
+                enable yes;
+                dampening-profile {
+                  default {
+                    cutoff 1.25;
+                    reuse 0.5;
+                    max-hold-time 900;
+                    decay-half-life-reachable 300;
+                    decay-half-life-unreachable 900;
+                    enable yes;
+                  }
+                }
+                routing-options {
+                  graceful-restart {
+                    enable yes;
+                  }
+                  as-format 4-byte;
+                }
+                peer-group {
+                  avs {
+                    type {
+                      ebgp {
+                        remove-private-as yes;
+                        import-nexthop original;
+                        export-nexthop resolve;
+                      }
+                    }
+                    peer {
+                      avseuwfw11 {
+                        peer-address {
+                          ip 10.20.9.4;
+                        }
+                        connection-options {
+                          incoming-bgp-connection {
+                            remote-port 0;
+                            allow yes;
+                          }
+                          outgoing-bgp-connection {
+                            local-port 0;
+                            allow yes;
+                          }
+                          multihop 5;
+                          keep-alive-interval 30;
+                          open-delay-time 0;
+                          hold-time 90;
+                          idle-hold-time 15;
+                          min-route-adv-interval 30;
+                        }
+                        subsequent-address-family-identifier {
+                          unicast yes;
+                          multicast no;
+                        }
+                        local-address {
+                          ip 10.20.5.4/24;
+                          interface ethernet1/2;
+                        }
+                        bfd {
+                          profile Inherit-vr-global-setting;
+                        }
+                        max-prefixes 5000;
+                        enable yes;
+                        peer-as 65103;
+                        enable-mp-bgp no;
+                        address-family-identifier ipv4;
+                        enable-sender-side-loop-detection yes;
+                        reflector-client non-client;
+                        peering-type unspecified;
+                      }
+                    }
+                    aggregated-confed-as-path yes;
+                    soft-reset-with-stored-info no;
+                    enable yes;
+                  }
+                }
+                reject-default-route yes;
+                router-id 10.20.4.4;
+                local-as 65101;
+                install-route yes;
+                allow-redist-default-route yes;
+                redist-rules {
+                  default {
+                    address-family-identifier ipv4;
+                    enable yes;
+                    set-origin incomplete;
+                  }
+                }
+              }
+              rip {
+                enable no;
+              }
+              ospf {
+                enable no;
+              }
+              ospfv3 {
+                enable no;
+              }
+              redist-profile {
+                default {
+                  filter {
+                    type static;
+                    destination 0.0.0.0/0;
+                  }
+                  priority 1;
+                  action {
+                    redist;
+                  }
+                }
+              }
+            }
+            interface [ ethernet1/1 ethernet1/2];
+            ecmp {
+              algorithm {
+                ip-modulo;
+              }
+            }
+            routing-table {
+              ip {
+                static-route {
+                  default {
+                    nexthop {
+                      ip-address 10.20.4.1;
+                    }
+                    bfd {
+                      profile None;
+                    }
+                    interface ethernet1/1;
+                    metric 10;
+                    destination 0.0.0.0/0;
+                    route-table {
+                      unicast;
+                    }
+                  }
+                  avs-routing {
+                    nexthop {
+                      ip-address 10.20.5.1;
+                    }
+                    bfd {
+                      profile None;
+                    }
+                    interface ethernet1/2;
+                    metric 10;
+                    destination 10.20.9.0/24;
+                    route-table {
+                      unicast;
+                    }
+                  }
+                  onprem {
+                    nexthop {
+                      ip-address 10.20.4.1;
+                    }
+                    bfd {
+                      profile None;
+                    }
+                    interface ethernet1/1;
+                    metric 10;
+                    destination 10.220.0.0/24;
+                    route-table {
+                      unicast;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        tunnel {
+          ipsec;
+        }
+      }
+      deviceconfig {
+        system {
+          type {
+            dhcp-client {
+              send-hostname yes;
+              send-client-id no;
+              accept-dhcp-hostname no;
+              accept-dhcp-domain no;
+            }
+          }
+          update-server updates.paloaltonetworks.com;
+          update-schedule {
+            threats {
+              recurring {
+                weekly {
+                  day-of-week wednesday;
+                  at 01:02;
+                  action download-only;
+                }
+              }
+            }
+          }
+          timezone US/Pacific;
+          service {
+            disable-telnet yes;
+            disable-http yes;
+          }
+          hostname avseuwfw01;
+        }
+        setting {
+          config {
+            rematch yes;
+          }
+          management {
+            hostname-type-in-syslog FQDN;
+            initcfg {
+              hostname avseuwfw01;
+              username pl;
+              type {
+                dhcp-client {
+                  send-hostname yes;
+                  send-client-id no;
+                  accept-dhcp-hostname no;
+                  accept-dhcp-domain no;
+                }
+              }
+            }
+          }
+        }
+      }
+      vsys {
+        vsys1 {
+          application;
+          application-group;
+          zone {
+            Internal {
+              network {
+                layer3 [ ethernet1/1 ethernet1/2];
+              }
+            }
+          }
+          service;
+          service-group;
+          schedule;
+          rulebase {
+            security {
+              rules {
+                private-10 481edb41-8c96-4018-b1c5-196cdd6804bd {
+                  to any;
+                  from any;
+                  source 10.0.0.0-10.255.255.255;
+                  destination 10.0.0.0-10.255.255.255;
+                  source-user any;
+                  category any;
+                  application any;
+                  service any;
+                  source-hip any;
+                  destination-hip any;
+                  action allow;
+                  log-start yes;
+                }
+              }
+            }
+          }
+          import {
+            network {
+              interface [ ethernet1/1 ethernet1/2];
+            }
+          }
+        }
+      }
+    }
+  }
+}
