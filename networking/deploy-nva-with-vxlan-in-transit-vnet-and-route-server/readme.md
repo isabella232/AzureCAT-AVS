@@ -34,6 +34,12 @@ Here a more detailed look at the scenario:
 
 ## Detailed Configuration
 
+The configuration examples where done using Fortinet Fortigate.
+
+You can also use any other firewall vendor that supports VXLAN for this configuration.
+
+It is important that you have a detailed look at the BGP configuration that is responsible for rewriting for AS Path.
+
 ### Hub VNET Route Server Overview
 
 ![routeserver1](images/routeserver1.png)
