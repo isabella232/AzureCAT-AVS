@@ -16,6 +16,10 @@ When looking at the way back the traffic is going to the vNET Gateway and, as th
 >
 > do not announce the on premise networks in our on premesis ExpressRoute router
 
+> IMPORTANT
+>
+> filter all routes that you get announced from Azure on your on premises router, otherwise you would get your on premisis routes from Azure as well.
+
 A more detailed view describes the required settings on the vNETs and Subnets
 
 ![architecture design detail](images/image2.png)
