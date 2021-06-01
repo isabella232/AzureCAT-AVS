@@ -7,6 +7,7 @@ In this solution Azure Virtual WAN was used together with a non-integrated Virtu
 This solution was tested with Palo Alto VM series firewalls in single instance and HA (active/passive) scenarios.
 
 > You can also deploy it using scale set (VMSS), but you need to predefine all possible BGP sessions.
+> In case of using VMSS please make sure that you start/stop BGP sessions correct to avoid any data loss during Scale-Up or Scale-Down.
 
 ## Architecture
 
