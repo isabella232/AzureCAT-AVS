@@ -18,9 +18,9 @@ A separate AVS VNET is used to transit the traffic to AVS. This is required as t
 
 ![architecture1](images/architecture1.png)
 
-A PDF version is also available [here](images/architecture.pdf).
+A PDF version is also available [here](images/architecture1.pdf).
 
-A Visio version is available [here](images/architecture.vsdx)
+A Visio version is available [here](images/architecture1.vsdx)
 
 ## Route Advertisement
 
