@@ -1,4 +1,4 @@
-# Deploy ASV with Global Reach with or without NVAs in Azure using VNETs or vWAN
+# Deploy AVS with Global Reach with or without NVAs in Azure using VNETs or vWAN
 
 This solution is the easiest way of deploying AVS.
 
